@@ -1,0 +1,39 @@
+﻿/*GT: Tìm kiếm Theo Chiều Rộng
+V0 := S(tập các trạng thái ban đầu)
+previous(START) := NIL
+k := 0
+while (không có trạng thái đích trong Vk và Vk khác rỗng) do
+    Vk+1 := tập rỗng
+    Với mỗi trạng thái s trong Vk
+        Với mỗi trạng thái s' trong succs(s)
+            Nếu s' chưa gán nhãn
+                Đặt previous(s') := s
+                Thêm s' vào Vk+1
+        k := k+1
+If Vk rỗng thì FAILURE
+Else xây dựng lời giải: Đặt Si là trạng thái thứ i trên đường đi ngắn nhất.
+Định nghĩa Sk = GOAL, và với mọi i <= k, định nghĩa Si-1 = previous(Si).
+
+
+từng dòng 7 đến 12:
+Bước 1: Lấy đỉnh hiện tại ra để xét (tương đương dòng 7)
+Bạn cần lấy phần tử đầu tiên ra khỏi hàng đợi q và lưu nó vào một biến số nguyên, 
+ví dụ đặt tên là u hoặc s. Hãy dùng phương thức lấy-và-xóa phần tử khỏi Queue mà 
+mình đã nhắc đến ở câu trả lời trước.
+
+Bước 2: Duyệt tìm các đỉnh kề (tương đương dòng 8)
+Sử dụng một vòng lặp for chạy từ 0 đến tổng số đỉnh của đồ thị (dt.sodinh). 
+Bên trong vòng lặp này, bạn cần một câu lệnh if để kiểm tra xem đỉnh i đang duyệt 
+có đường nối với đỉnh u hay không. Bạn có thể kiểm tra điều này thông qua ma trận kề 
+(dt.matran tại hàng u, cột i có giá trị khác 0).
+
+Bước 3: Kiểm tra đỉnh chưa gán nhãn và lưu vết (tương đương dòng 9 và 10)
+Ngay khi tìm thấy đỉnh i kề với u, bạn phải kiểm tra xem đỉnh i đã được ghé thăm chưa. 
+Nếu bạn đang dùng mảng pre để lưu vết và khởi tạo mặc định bằng -1, 
+thì dấu hiệu chưa thăm là pre của i đang bằng -1 (và nhớ đảm bảo i không phải là đỉnh Start). 
+Nếu thỏa mãn, bạn thực hiện "gán nhãn" bằng cách cho pre của i nhận giá trị là u.
+
+Bước 4: Thêm đỉnh kề vào hàng đợi (tương đương dòng 11)
+Sau khi đã cập nhật mảng pre cho đỉnh i, bước cuối cùng trong vòng lặp là đưa đỉnh i này 
+vào cuối hàng đợi q để thuật toán tiếp tục mở rộng tìm kiếm từ đỉnh này trong các lượt sau. 
+Hãy dùng phương thức thêm phần tử vào Queue.*/
